@@ -1,15 +1,15 @@
 // Header.jsx
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { useState } from 'react';
 import '../styles/nav.css'; // Asegúrate de tener un archivo CSS para los estilos
 
 const Nav = ({ carrito, onAddToCarrito, onRemoveFromCarrito }) => {
-const [showCarrito, setShowCarrito] = useState(false);
+    const navigate = useNavigate();
 
-const handleCarritoToggle = () => {
-    setShowCarrito(!showCarrito);
-};
+    const handleGoToCarrito = () => {
+      navigate('/carrito', { state: { carrito } }); // Redirige al carrito con el estado del carrito
+    };
 
 return (
 <header className="header">
@@ -17,7 +17,9 @@ return (
     <h1>Mi Tienda</h1>
     </div>
     <div className="header-right">
-    
+        <button onClick={handleGoToCarrito} className="nav-button">
+            Ver Carrito ({carrito.length})
+        </button>
     </div>
 </header>
 );

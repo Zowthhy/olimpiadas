@@ -1,0 +1,14 @@
+/* src/styles/CarritoPage.css */
+
+.carrito-page {
+    padding: 20px;
+    background-color: #f4f4f4;
+    min-height: 100vh;
+    width: 80%;
+}
+
+.carrito-page h1 {
+    font-size: 28px;
+    color: #333;
+    margin-bottom: 20px;
+}
