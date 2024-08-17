@@ -1,0 +1,42 @@
+.carrito {
+background-color: #fff;
+border: 1px solid #ddd;
+border-radius: 8px;
+padding: 10px;
+position: absolute;
+top: 60px; /* Ajusta según la altura de tu header */
+right: 20px;
+width: 300px;
+box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.carrito h3 {
+margin: 0 0 10px 0;
+}
+
+.carrito-items {
+max-height: 300px;
+overflow-y: auto;
+}
+
+.carrito-item {
+display: flex;
+align-items: center;
+margin-bottom: 10px;
+}
+
+.carrito-item img {
+width: 50px;
+height: 50px;
+object-fit: cover;
+margin-right: 10px;
+}
+
+.carrito-item-info {
+flex: 1;
+}
+
+.carrito-summary {
+margin-top: 10px;
+font-weight: bold;
+}
