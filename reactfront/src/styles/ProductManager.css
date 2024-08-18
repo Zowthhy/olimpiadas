@@ -1,0 +1,55 @@
+/* src/styles/ProductManager.css */
+
+.product-manager {
+    padding: 20px;
+    background-color: #f9f9f9;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.product-form {
+    margin-bottom: 20px;
+}
+
+.product-form label {
+    display: block;
+    margin-bottom: 10px;
+}
+
+.product-form input {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+}
+
+.product-form button {
+    padding: 10px;
+    border: none;
+    border-radius: 4px;
+    background-color: #007bff;
+    color: #fff;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.product-form button:hover {
+    background-color: #0056b3;
+}
+
+.product-manager ul {
+    list-style: none;
+    padding: 0;
+}
+
+.product-manager li {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+    border-bottom: 1px solid #ddd;
+}
+
+.product-manager button {
+    margin-left: 10px;
+}

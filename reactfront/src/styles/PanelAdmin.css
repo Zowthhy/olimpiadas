@@ -1,0 +1,24 @@
+.admin-panel {
+    padding: 20px;
+    background-color: #f9f9f9;
+}
+
+.product-manager, .order-manager {
+    margin-bottom: 20px;
+}
+
+.product-manager input, .order-manager button {
+    margin: 5px 0;
+}
+
+button {
+    padding: 10px;
+    border: none;
+    border-radius: 4px;
+    background-color: #007bff;
+    color: #fff;
+}
+
+button:hover {
+    background-color: #0056b3;
+}
