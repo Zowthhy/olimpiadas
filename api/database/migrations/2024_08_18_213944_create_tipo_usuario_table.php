@@ -11,9 +11,8 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('administradores', function (Blueprint $table) {
-            $table->integer('id', true);
-            $table->string('nombre', 20)->nullable();
+        Schema::table('tipo_usuario', function (Blueprint $table) {
+            //
         });
     }
 
@@ -22,6 +21,8 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('administradores');
+        Schema::table('tipo_usuario', function (Blueprint $table) {
+            //
+        });
     }
 };
