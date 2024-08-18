@@ -1,0 +1,62 @@
+/* src/styles/Carrito.css */
+
+.carrito {
+    padding: 20px;
+    background-color: #f9f9f9;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    max-width: 1200px; /* Aumenta el ancho del contenedor */
+    margin: 0 auto; /* Centra el contenedor */
+}
+
+.carrito h3 {
+    margin-bottom: 20px;
+    font-size: 24px;
+    color: #000; /* Cambia el color del texto a negro */
+}
+
+.carrito-items {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.carrito-item {
+    display: flex;
+    align-items: center;
+    padding: 10px;
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+}
+
+.carrito-item img {
+    width: 60px;
+    height: 60px;
+    object-fit: cover;
+    margin-right: 15px;
+}
+
+.carrito-item-info div {
+    margin-bottom: 5px;
+    color: #000; /* Color de la letra negro */
+}
+
+
+.carrito-item-info div {
+    margin-bottom: 5px;
+    color: #000; /* Cambia el color del texto a negro */
+}
+
+.carrito-summary {
+    margin-top: 20px;
+    font-size: 18px;
+    font-weight: bold;
+    color: #000; /* Cambia el color del texto a negro */
+}
+
+.carrito-summary div {
+    margin-bottom: 10px;
+    color: #000; /* Cambia el color del texto a negro */
+}
