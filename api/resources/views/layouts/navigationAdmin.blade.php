@@ -9,30 +9,27 @@
                         <x-application-logo class="block h-9 w-auto fill-current text-gray-800" />
                     </a>
                 </div>
-
+            </div>
                 <!-- Navigation Links -->
                 <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
-                    <x-nav-link :href="route('index')" :active="request()->routeIs('dashboard')">
-                        {{ __('Inicio') }}
+                    <x-nav-link :href="route('producto.index')" :active="request()->routeIs('producto.index')">
+                        {{ __('Productos') }}
                     </x-nav-link>
                 </div>
-            <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
-                <x-nav-link :href="route('producto.index')" :active="request()->routeIs('producto.index')">
-                    {{ __('Mis Pedidos') }}
-                </x-nav-link>
-            </div>
-        </div>
+                <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
+                    <x-nav-link :href="route('pedido.index')" :active="request()->routeIs('pedido.index')">
+                        {{ __('Pedidos') }}
+                    </x-nav-link>
+                </div>
+                <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
+                    <x-nav-link :href="route('cliente.index')" :active="request()->routeIs('cliente.index')">
+                        {{ __('Clientes') }}
+                    </x-nav-link>
+                </div>
+            
 
             <!-- Settings Dropdown -->
-            
             <div class="hidden sm:flex sm:items-center sm:ms-6">
-                <div class="inline-flex items-center px-3 py-2  border border-transparent text-sm leading-4 font-medium rounded-md text-gray-500">
-                    <x-nav-link :href="route('pedido.create')" :active="request()->routeIs('pedido.create')">
-                    {{ __('Carrito') }}
-                    </x-nav-link>
-                 </div>
-
-                
                 <x-dropdown align="right" width="48">
                     <x-slot name="trigger">
                         <button class="inline-flex items-center px-3 py-2 border border-transparent text-sm leading-4 font-medium rounded-md text-gray-500 bg-white hover:text-gray-700 focus:outline-none transition ease-in-out duration-150">
@@ -50,12 +47,9 @@
                         <x-dropdown-link :href="route('profile.edit')">
                             {{ __('Profile') }}
                         </x-dropdown-link>
-
-                        @if(Auth::user() -> id_type == 1)
                         <x-dropdown-link :href="route('dashboard')">
                             {{ __('Admin') }}
                         </x-dropdown-link>
-                        @endif
 
                         <!-- Authentication -->
                         <form method="POST" action="{{ route('logout') }}">
@@ -82,7 +76,6 @@
             </div>
         </div>
     </div>
-</div>
 
     <!-- Responsive Navigation Menu -->
     <div :class="{'block': open, 'hidden': ! open}" class="hidden sm:hidden">

@@ -20,7 +20,14 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
-        'id_type'
+        'id_type',
+    ];
+
+    protected $guarded = [
+        'name',
+        'email',
+        'password',
+        'id_type',
     ];
 
     /**
@@ -44,5 +51,10 @@ class User extends Authenticatable
             'email_verified_at' => 'datetime',
             'password' => 'hashed',
         ];
+    }
+
+    public function pedidos()
+    {
+        return $this->hasMany(Pedido::class, 'cliente_id');
     }
 }

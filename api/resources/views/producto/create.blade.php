@@ -1,4 +1,4 @@
-
+<x-appAdmin-layout>
     <div class="container">
         <h1>Agregar Nuevo Producto</h1>
 
@@ -27,3 +27,5 @@
             <button type="submit" class="btn btn-primary">Guardar Producto</button>
         </form>
     </div>
+</x-appAdmin-layout>
+

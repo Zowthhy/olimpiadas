@@ -7,5 +7,15 @@ use Illuminate\Database\Eloquent\Model;
 
 class Pedido extends Model
 {
+    protected $table = 'pedidos';
+    protected $primaryKey = 'id';
+    protected $fillable = ['id','id_c', 'id_e', 'id_p'];
+    public $timestamps = true;
+    protected $guarded = [];
+
+    public function cliente_id(){
+        return $this->belongsTo(User::class, 'cliente'); 
+    }
+    
     use HasFactory;
 }
