@@ -5,19 +5,18 @@
             <div class="flex">
                 <!-- Logo -->
                 <div class="shrink-0 flex items-center">
-                    <a href="{{ route('index') }}">
+                    <a href="{{ route('producto.indexUser') }}">
                         <x-application-logo class="block h-9 w-auto fill-current text-gray-800" />
                     </a>
-                </div>
-
+            </div>
                 <!-- Navigation Links -->
                 <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
-                    <x-nav-link :href="route('index')" :active="request()->routeIs('dashboard')">
+                    <x-nav-link :href="route('producto.indexUser')" :active="request()->routeIs('producto.indexUser')">
                         {{ __('Inicio') }}
                     </x-nav-link>
                 </div>
             <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
-                <x-nav-link :href="route('producto.index')" :active="request()->routeIs('producto.index')">
+                <x-nav-link :href="route('pedidoCliente.index')" :active="request()->routeIs('pedidoCliente')">
                     {{ __('Mis Pedidos') }}
                 </x-nav-link>
             </div>
@@ -27,7 +26,7 @@
             
             <div class="hidden sm:flex sm:items-center sm:ms-6">
                 <div class="inline-flex items-center px-3 py-2  border border-transparent text-sm leading-4 font-medium rounded-md text-gray-500">
-                    <x-nav-link :href="route('pedido.create')" :active="request()->routeIs('pedido.create')">
+                    <x-nav-link :href="route('carrito.carrito')" :active="request()->routeIs('carrito.carrito')">
                     {{ __('Carrito') }}
                     </x-nav-link>
                  </div>

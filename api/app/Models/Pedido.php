@@ -13,7 +13,7 @@ class Pedido extends Model
     public $timestamps = true;
     protected $guarded = [];
 
-    public function cliente_id(){
+    public function cliente(){
         return $this->belongsTo(User::class, 'cliente'); 
     }
     

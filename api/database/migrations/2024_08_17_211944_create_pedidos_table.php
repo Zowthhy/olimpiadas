@@ -15,7 +15,6 @@ return new class extends Migration
             $table->integer('id', true);
             $table->unsignedBigInteger('cliente')->nullable(false);
             $table->integer('id_e')->nullable()->index('id_e');
-            $table->integer('id_p')->nullable()->index('id_p');
             $table->timestamps();
         });
     }

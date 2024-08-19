@@ -22,7 +22,7 @@
                            <th><a href="{{ route('pedido.edit', $pedido -> id) }}" class="pedido-edit-button">Editar</a></th>
 
                            <th>{{ $pedido-> id }}</th>
-                           <th>{{ $pedido-> cliente_id -> name }}</th>
+                           <th>{{ $pedido-> cliente-> name }}</th>
                            <th>{{ $pedido-> id_p }}</th> 
                            <th>
                             @if ($pedido -> id_e === 1)

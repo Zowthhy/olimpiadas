@@ -2,7 +2,6 @@
 
 namespace Database\Seeders;
 
-use App\Models\Producto;
 use App\Models\User;
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
@@ -23,13 +22,5 @@ class DatabaseSeeder extends Seeder
             'password' => bcrypt('pass123.')
         ]);
 
-        Producto::factory()->create([
-            'codigo' => 1,
-            'precio' => 200,
-            'stock' => 5,
-            'descripcion' => 'Botella de agua'
-        ]);
-
-        Producto::factory(10)->create();
     }
 }

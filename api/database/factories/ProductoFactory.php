@@ -17,10 +17,7 @@ class ProductoFactory extends Factory
     public function definition(): array
     {
         return [
-            'codigo' => Str::random(10),
-            'stock' => fake()->name(),
-            'precio' => fake()->name(),
-            'descripcion' => fake()->name(),
+
         ];
     }
 }

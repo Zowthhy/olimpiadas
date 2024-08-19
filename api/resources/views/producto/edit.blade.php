@@ -1,6 +1,6 @@
 <x-appAdmin-layout>
     <div class="producto-container single-producto">
-        <h1 class="text-3x1 py-4">Edit your product</h1>
+        <h1 class="text-3x1 py-4">Edit your producto</h1>
         <form action=" {{ route('producto.update', $producto)}}" method="POST" class="producto">
             @csrf
             @method('PUT')

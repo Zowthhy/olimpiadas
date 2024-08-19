@@ -11,9 +11,8 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('tipo_usuario', function (Blueprint $table) {
-            $table->id();
-            $table->timestamps();
+        Schema::table('users', function (Blueprint $table) {
+            $table->foreign(['id_type'], 'users_ibfk_1')->references(['id'])->on('tipo_usuario')->onUpdate('restrict')->onDelete('restrict');
         });
     }
 
@@ -22,6 +21,9 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('tipo_usuario');
+        Schema::table('users', function (Blueprint $table) {
+            $table->dropForeign('users_ibfk_1');
+        });
     }
 };
+

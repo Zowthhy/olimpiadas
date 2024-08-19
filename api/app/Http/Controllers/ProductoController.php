@@ -17,6 +17,12 @@ class ProductoController extends Controller
         return view('producto.index', ['productos' => $productos]);
     }
 
+    public function indexUser()
+    {
+        $productos = Producto::all();
+        return view('producto.indexUser', ['productos' => $productos]);
+    }
+
     /**
      * Show the form for creating a new resource.
      */
@@ -95,6 +101,6 @@ class ProductoController extends Controller
     {
         $producto -> delete();
 
-        return to_route('producto.index')->with('message','Product was deleted');
+        return to_route('producto.index')->with('message','producto was deleted');
     }
 }

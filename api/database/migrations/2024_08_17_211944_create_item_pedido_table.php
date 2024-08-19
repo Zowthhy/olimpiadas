@@ -14,8 +14,8 @@ return new class extends Migration
         Schema::create('item_pedido', function (Blueprint $table) {
             $table->integer('id', true);
             $table->integer('cantidad');
-            $table->integer('id_pe')->nullable()->index('id_pe');
-            $table->integer('id_pr')->nullable()->index('id_pr');
+            $table->integer('id_pedido')->nullable()->index('id_pedido');
+            $table->integer('id_producto')->nullable()->index('id_producto');
         });
     }
 
