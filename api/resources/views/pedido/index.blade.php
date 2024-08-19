@@ -18,7 +18,7 @@
                            </th>
                            </form>
 
-                           <th><a href="{{ route('pedido.show', $pedido -> id) }}" class="note-edit-button">Ver</a></th>
+                           <th><a href="{{ route('pedido.show', $pedido -> id) }}" class="note-edit-button">Vasder</a></th>
                            <th><a href="{{ route('pedido.edit', $pedido -> id) }}" class="pedido-edit-button">Editar</a></th>
 
                            <th>{{ $pedido-> id }}</th>
@@ -27,9 +27,17 @@
                            <th>
                             @if ($pedido -> id_e === 1)
                                 Pendiente
-                            @else
+                            @elseif ($pedido -> id_e === 2)
+                                Entregado
+                            @elseif ($pedido -> id_e === 3)
+                                Confirmado
+                            @elseif ($pedido -> id_e === 4)
                                 Entregado
                             @endif
+                        </th>
+
+                        <th>
+                            <a href="{{ route('pedido.edit', $pedido -> id) }}" class="pedido-edit-button">Entregar</a>
                         </th>
                         </div>
                     </div>    

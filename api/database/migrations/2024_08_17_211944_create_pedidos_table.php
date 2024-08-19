@@ -13,10 +13,10 @@ return new class extends Migration
     {
         Schema::create('pedidos', function (Blueprint $table) {
             $table->integer('id', true);
-            $table->date('fecha');
-            $table->integer('id_c')->nullable()->index('id_c');
+            $table->unsignedBigInteger('cliente')->nullable(false);
             $table->integer('id_e')->nullable()->index('id_e');
             $table->integer('id_p')->nullable()->index('id_p');
+            $table->timestamps();
         });
     }
 
