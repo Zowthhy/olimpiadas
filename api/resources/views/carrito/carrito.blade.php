@@ -22,5 +22,9 @@
             @endforeach
         </ul>
         <p>Total: {{ array_sum(array_column($carrito, 'precio')) }}</p>
+        <form action="{{ route('carrito.remove', $productoId) }}" method="POST" style="display:inline;">
+            @csrf
+            <button type="submit">Eliminar</button>
+        </form>
     @endif
 </x-app-layout>

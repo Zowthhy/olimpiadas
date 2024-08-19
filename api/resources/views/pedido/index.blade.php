@@ -18,11 +18,11 @@
                            </th>
                            </form>
 
-                           <th><a href="{{ route('pedido.show', $pedido -> id) }}" class="note-edit-button">Vasder</a></th>
+                           <th><a href="{{ route('pedido.show', $pedido -> id) }}" class="note-edit-button">Ver</a></th>
                            <th><a href="{{ route('pedido.edit', $pedido -> id) }}" class="pedido-edit-button">Editar</a></th>
 
                            <th>{{ $pedido-> id }}</th>
-                           <th>{{ $pedido-> cliente-> name }}</th>
+                           <th>{{ $pedido-> cliente }}</th>
                            <th>{{ $pedido-> id_p }}</th> 
                            <th>
                             @if ($pedido -> id_e === 1)
