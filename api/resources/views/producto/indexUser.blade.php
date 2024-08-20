@@ -26,7 +26,6 @@
     
                 @endforeach
                 </table>
-                <a href="{{ route('carrito.clear') }}" class="btn btn-danger">Vaciar Carrito</a>
             </div>
         </div>    
 </x-app-layout>

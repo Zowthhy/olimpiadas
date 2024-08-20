@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Pedido;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class PedidoController extends Controller
 {
@@ -12,8 +13,7 @@ class PedidoController extends Controller
      */
     public function index()
     {
-        $pedidos = Pedido::all();
-
+        $pedidos = Pedido::with('clientes')->get();
         return view('pedido.index', ['pedidos' => $pedidos]);
     }
 
@@ -22,7 +22,14 @@ class PedidoController extends Controller
      */
     public function show(Pedido $pedido)
     {
-        return view('show.index', ['pedido' => $pedido]);
+        $items_pedidos = $pedido->item_pedido;
+
+        if (!$pedido) {
+            // Si no se encuentra el pedido, retorna un error 404
+            return response()->json(['error' => 'Pedido no encontrado'], 404);
+        }
+
+        return view('pedido.show', ['items_pedidos' => $pedido->items, 'pedido' => $pedido]);
     }
 
     public function create()
@@ -35,25 +42,16 @@ class PedidoController extends Controller
      */
     public function store(Request $request)
     {
-                // Validar los datos del formulario
 
-                $validatedData = $request->validate([
-                    'codigo' => 'required|unique:producto,codigo|max:255',
-                    'precio' => 'required|numeric',
-                    'stock' => 'required|integer',
-                    'descripcion' => 'nullable|string',
-                ]);
-        
-                // Crear un nuevo producto en la base de datos
+                 $userId = Auth::user() -> id;
+
+                // Crear un nuevo producto en la base de datos con la Id de cliente
                 $pedido = Pedido::create([
-                    'codigo' => $validatedData['codigo'],
-                    'precio' => $validatedData['precio'],
-                    'stock' => $validatedData['stock'],
-                    'descripcion' => $validatedData['descripcion'],
+                    'cliente' => $userId,
                 ]);
-        
-                return to_route('producto.show', $pedido)->with('message', 'Note was create');
 
+                app(Item_PedidoController::class)->store($pedido -> id);
+                return redirect()->route('carrito.carrito');
         }
             
 
@@ -85,9 +83,48 @@ class PedidoController extends Controller
      * Remove the specified resource from storage.
      */
     public function destroy(Pedido $pedido)
-    {
+    {   
+        app(Item_PedidoController::class)->destroy($pedido -> id);
         $pedido -> delete();
 
         return to_route('pedido.index')->with('message','El pedido fue anulado');
     }
+
+    public function destroyUser(Pedido $pedido, $pedidoId)
+    {
+        $pedido = Pedido::find($pedidoId);
+        app(Item_PedidoController::class)->destroy($pedidoId);
+        $pedido -> delete();
+
+        return to_route('pedido.indexUser')->with('message','El pedido fue anulado');
+    }
+
+    public function indexUser()
+    {
+        // Obtener el usuario autenticado
+        $user = Auth::user();
+        
+        // Obtener solo los pedidos asignados a este usuario
+        $pedidos = $user->pedidos()->get();
+
+        // Pasar los pedidos a la vista
+        return view('pedido.indexUser', ['pedidos' => $pedidos]);
+    }
+
+
+    public function showUser(Pedido $pedido, $id){
+
+            $pedido = Pedido::find($id);
+            $items_pedidos = $pedido->item_pedido;
+    
+            if (!$pedido) {
+                // Si no se encuentra el pedido, retorna un error 404
+                return response()->json(['error' => 'Pedido no encontrado'], 404);
+            }
+    
+            return view('pedido.showUser', ['pedido' => $pedido, 'items_pedidos'=> $pedido -> items]);
+        
+    }
+
 }
+

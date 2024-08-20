@@ -29,6 +29,7 @@ class CarritoController extends Controller
                 $carrito[$productoId]['quantity']++;
             } else {
                 $carrito[$productoId] = [
+                    'codigo' => $producto->codigo,
                     'descripcion' => $producto->descripcion,
                     'precio' => $producto->precio,
                     'quantity' => 1
@@ -37,9 +38,7 @@ class CarritoController extends Controller
     
             session()->put('carrito', $carrito);
 
-
             return redirect()->back()->with('success', 'Producto añadido al carrito.');
-
         }
     }
 
@@ -56,7 +55,7 @@ class CarritoController extends Controller
             return redirect()->back()->with('success', 'Producto eliminado del carrito.');
         }
     }
-    public function clearCart()
+    public function clearCarrito()
 {
     // Eliminar solo el carrito
     session()->forget('carrito');

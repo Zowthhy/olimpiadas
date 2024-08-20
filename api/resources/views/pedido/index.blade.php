@@ -2,27 +2,19 @@
     <div class="note-container py-12">
         <div class="notes">
             <table>
-                <th colspan="3"></th>
-                <th>Id</th>
+                <th>ID</th>
+                <th>ID cliente</th>
                 <th>Cliente</th>
                 <th>Pago</th>
                 <th>Estado</th>
             @foreach ($pedidos as $pedido)
                 <tr>
                     <div class="pedido">
-                            <form action="{{ route('pedido.destroy', $pedido -> id) }}" method="POST">
-                            @csrf
-                            @method('DELETE')
-                           <th>
-                                <button class="pedido-delete-button">Anular pedido</button>
-                           </th>
-                           </form>
 
-                           <th><a href="{{ route('pedido.show', $pedido -> id) }}" class="note-edit-button">Ver</a></th>
-                           <th><a href="{{ route('pedido.edit', $pedido -> id) }}" class="pedido-edit-button">Editar</a></th>
 
                            <th>{{ $pedido-> id }}</th>
-                           <th>{{ $pedido-> cliente }}</th>
+                           <td>{{ $pedido-> clientes -> name }}</td>
+                           <td>{{ $pedido-> cliente }}</td>
                            <th>{{ $pedido-> id_p }}</th> 
                            <th>
                             @if ($pedido -> id_e === 1)
@@ -35,9 +27,21 @@
                                 Entregado
                             @endif
                         </th>
-
+                        @if ($pedido -> id_e !=2)
+                           
+                        <form action="{{ route('pedido.destroy', $pedido -> id) }}" method="POST">
+                        @csrf
+                        @method('DELETE')
+                       <th>
+                            <button class="pedido-delete-button">Anular pedido</button>
+                       </th>
+                       </form>
+                    @endif
+                       <th><a href="{{ route('pedido.show', $pedido -> id) }}" class="note-edit-button">Detalles</a></th>
                         <th>
-                            <a href="{{ route('pedido.edit', $pedido -> id) }}" class="pedido-edit-button">Entregar</a>
+                            @if ($pedido -> id_e != 2)
+                                <a href="{{ route('entrega.add', $pedido -> id) }}" class="pedido-edit-button">Entregar</a>
+                            @endif
                         </th>
                         </div>
                     </div>    

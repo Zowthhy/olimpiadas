@@ -1,19 +1,13 @@
-<x-appAdmin-layout>
-    <h1 class="text-3x1 py-4">pedido: {{ $pedido -> created_at}}</h1>
+<x-app-layout>
+    <h1 class="text-3x1 py-4">pedido creado: {{ $pedido -> created_at}}</h1>
     <div class="pedido-buttons">
-        <a href="{{ route('pedido.edit', $pedido)}}" class="pedido-edit-button">Edit</a>
-        <form action="{{ route('pedido.destroy', $pedido) }}" method="POST">
-            @csrf
-            @method('DELETE')
-            <button class="pedido-delete-button">Delete</button>
-        </form>
+
 <div class="pedido">
     <div class="pedido-body">
         {{ $pedido-> id }}
         {{ $pedido-> cliente }}
         {{ $pedido-> id_e }}
         {{ $pedido-> id_p }}
-        {{ $pedido-> precio_total }}
 
         Productos del pedido:
         <table>
@@ -42,4 +36,4 @@
     </div>
 </div>
 </div>   
-</x-appAdmin-layout>
+</x-app-layout>

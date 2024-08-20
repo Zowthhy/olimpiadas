@@ -9,13 +9,18 @@ class Pedido extends Model
 {
     protected $table = 'pedidos';
     protected $primaryKey = 'id';
-    protected $fillable = ['id','id_c', 'id_e', 'id_p'];
+    protected $fillable = ['id','cliente', 'id_e', 'id_p','precio_total'];
     public $timestamps = true;
     protected $guarded = [];
 
-    public function cliente(){
-        return $this->belongsTo(User::class, 'cliente'); 
+    public function clientes(){
+        return $this->belongsTo(User::class, 'cliente', 'id'); 
     }
+    public function items()
+{
+    return $this->hasMany(Item_pedidos::class, 'id_pedido', 'id');
+}
+
     
     use HasFactory;
 }

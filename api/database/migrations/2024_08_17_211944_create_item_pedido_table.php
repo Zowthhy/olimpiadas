@@ -16,6 +16,7 @@ return new class extends Migration
             $table->integer('cantidad');
             $table->integer('id_pedido')->nullable()->index('id_pedido');
             $table->integer('id_producto')->nullable()->index('id_producto');
+            $table->integer('precio_parcial')->nullable()->index('precio_parcial');
         });
     }
 

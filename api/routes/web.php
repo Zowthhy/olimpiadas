@@ -3,8 +3,8 @@
 use App\Http\Controllers\CarritoController;
 use App\Http\Controllers\ClienteController;
 use App\Http\Controllers\PedidoController;
-use App\Http\Controllers\PedidoUsuarioController;
 use App\Http\Controllers\ProductoController;
+use App\Http\Controllers\entregaController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 
@@ -21,16 +21,18 @@ use Illuminate\Support\Facades\Route;
 
 Route::resource('producto', ProductoController::class);
 
-Route::resource('pedido', PedidoController::class);
-
 Route::resource('cliente', ClienteController::class);
 
 Route::put('/cliente/{id}/update-id-type', [ClienteController::class, 'updateIdType'])->name('cliente.updateIdType');
 
 Route::get('/index', [ProductoController::class, 'indexUser'])->name('producto.indexUser');
 
+Route::resource('pedido', PedidoController::class);
+Route::get('/indexUser', [PedidoController::class, 'indexUser'])->name('pedido.indexUser');
+Route::delete('/destroyUser/{id}', [PedidoController::class, 'destroyUser'])->name('pedido.destroyUser');
+Route::get('/showUser/{id}', [PedidoController::class, 'showUser'])->name('pedido.showUser');
 
-Route::resource('pedidoCliente', PedidoUsuarioController::class);
+Route::get('/entrega/{id}', [entregaController::class,'add'])->name('entrega.add');
 
 Route::post('/carrito/add/{productoId}', [CarritoController::class, 'add'])->name('carrito.add');
 Route::get('/carrito', [CarritoController::class, 'index'])->name('carrito.carrito');
@@ -39,6 +41,8 @@ Route::get('/carrito/clear', function () {
     session()->forget('carrito'); // Vacía solo el carrito
     return redirect()->back()->with('success', 'Carrito vaciado correctamente.');
 })->name('carrito.clear');
+
+
 
 Route::get('/dashboard', function () {
     return view('dashboard');

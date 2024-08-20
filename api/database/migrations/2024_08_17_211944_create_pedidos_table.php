@@ -14,7 +14,9 @@ return new class extends Migration
         Schema::create('pedidos', function (Blueprint $table) {
             $table->integer('id', true);
             $table->unsignedBigInteger('cliente')->nullable(false);
-            $table->integer('id_e')->nullable()->index('id_e');
+            $table->integer('id_e')->nullable()->index('id_e')->default(1);
+            $table->integer('id_p')->nullable()->index('id_p')->default(1);
+            $table->integer('precio_total')->index('precio_total')->nullable();
             $table->timestamps();
         });
     }
