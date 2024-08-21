@@ -1,4 +1,12 @@
+
 <x-app-layout>
+@if (!isset($pedidos) || $pedidos->isEmpty())
+    @if (request()->path() == 'historialUser')
+        <p>Aún no se han realizado compras!</p>
+    @else
+        <p>No hay pedidos pendientes!</p>
+    @endif
+@else
     <div class="pedido-container py-12">
         Sus pedidos:
         <div class="pedidos">
@@ -35,6 +43,6 @@
             </tr>
             @endforeach
             </table>
-        </div>
-    </div>    
-</x-app-layout>
+        </div>   
+@endif
+</x-app-layout> 

@@ -37,6 +37,7 @@ Route::resource('pedido', PedidoController::class);
 Route::get('/indexUser', [PedidoController::class, 'indexUser'])->name('pedido.indexUser');
 Route::delete('/destroyUser/{id}', [PedidoController::class, 'destroyUser'])->name('pedido.destroyUser');
 Route::get('/showUser/{id}', [PedidoController::class, 'showUser'])->name('pedido.showUser');
+Route::get('/historialUser', [PedidoController::class, 'historialUser'])->name('pedido.historialUser');
 
 // Rutas entrega
 

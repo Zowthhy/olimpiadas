@@ -105,7 +105,7 @@ class PedidoController extends Controller
         $user = Auth::user();
         
         // Obtener solo los pedidos asignados a este usuario
-        $pedidos = $user->pedidos()->get();
+        $pedidos = $user->pedidos()->where('id_e', 1)->get();
 
         // Pasar los pedidos a la vista
         return view('pedido.indexUser', ['pedidos' => $pedidos]);
@@ -126,5 +126,17 @@ class PedidoController extends Controller
         
     }
 
+    public function historialUser(){
+        // Obtener el usuario autenticado
+        $user = Auth::user();
+        
+        // Obtener solo los pedidos asignados a este usuario
+        $pedidos = $user->pedidos()->where('id_e', 2)->get();;
+
+        // Pasar los pedidos a la vista
+        return view('pedido.indexUser', ['pedidos' => $pedidos]);
+    }
+
+    
 }
 
