@@ -19,20 +19,30 @@ use Illuminate\Support\Facades\Route;
     // Route::put('/producto/{id}', [ProductoController::class, 'update'])->name('producto.update');
     // Route::delete('/producto/{id}', [ProductoController::class, 'destroy'])->name('producto.destroy');
 
+
+// Rutas para producto    
+
 Route::resource('producto', ProductoController::class);
+Route::get('/index', [ProductoController::class, 'indexUser'])->name('producto.indexUser');
+Route::get('/', [ProductoController::class,'indexUser'])->name('indexUser');
+
+// Rutas cliente
 
 Route::resource('cliente', ClienteController::class);
-
 Route::put('/cliente/{id}/update-id-type', [ClienteController::class, 'updateIdType'])->name('cliente.updateIdType');
 
-Route::get('/index', [ProductoController::class, 'indexUser'])->name('producto.indexUser');
+// Rutas para pedidos
 
 Route::resource('pedido', PedidoController::class);
 Route::get('/indexUser', [PedidoController::class, 'indexUser'])->name('pedido.indexUser');
 Route::delete('/destroyUser/{id}', [PedidoController::class, 'destroyUser'])->name('pedido.destroyUser');
 Route::get('/showUser/{id}', [PedidoController::class, 'showUser'])->name('pedido.showUser');
 
+// Rutas entrega
+
 Route::get('/entrega/{id}', [entregaController::class,'add'])->name('entrega.add');
+
+// Rutas carrito
 
 Route::post('/carrito/add/{productoId}', [CarritoController::class, 'add'])->name('carrito.add');
 Route::get('/carrito', [CarritoController::class, 'index'])->name('carrito.carrito');
@@ -47,6 +57,8 @@ Route::get('/carrito/clear', function () {
 Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
+
+//Rutas perfil
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
