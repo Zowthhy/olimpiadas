@@ -1,10 +1,17 @@
 <x-appAdmin-layout>
+    <x-slot name="header">
+        <div class="font-semibold text-xl text-gray-800 leading-tight">
+            <a href="route('pedido.indexUser')" :active="request()->routeIs('pedido.indexUser')">
+                {{ __('Ver Ventas') }}
+            </a>
+        </div>
+    </x-slot>
     <div class="note-container py-12">
         <div class="notes">
             <table>
-                <th>ID</th>
-                <th>ID cliente</th>
+                <th>ID Pedido</th>
                 <th>Cliente</th>
+                <th>ID Cliente</th>
                 <th>Pago</th>
                 <th>Estado</th>
             @foreach ($pedidos as $pedido)

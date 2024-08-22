@@ -2,12 +2,16 @@
 @if (Auth::User())
     
 <x-app-layout>
-            <div class="productos">
 
+        <div class="productos-categorias">
+            <div class="categorias">
+                <h1>Categorias</h1>
+            </div>
+            <div class="productos">
                 @foreach ($productos as $producto)
                     <div class="producto">
     
-                           {{ $producto-> descripcion }}
+                           {{ $producto-> descripcion }}<br>
                            {{ $producto-> precio }}$
     
                            @if ($producto -> stock > 0)
@@ -19,10 +23,10 @@
                                 <p>Fuera de stock</p>
                             @endif
                     </div>  
-
-    
                 @endforeach
-                </div>  
+            </div>  
+        </div>
+
 </x-app-layout>
 @else
 <x-guest-layout>
@@ -34,7 +38,7 @@
                    {{ $producto-> descripcion }}
                    {{ $producto-> precio }}
 
-                   <form action="{{ route('login') }}" method="POST">
+                   <form action="{{ route('login') }}" method="GET">
                     @csrf
                     <button type="submit">Añadir al Carrito</button>
                 </form>
@@ -43,10 +47,6 @@
 
         @endforeach
         </div>  
-        @if (session('message'))
-            <div class="alert alert-success alert-dismissible fade show" role="alert">
-                {{ session('message') }}
-            </div>
-        @endif
+
 </x-guest-layout>
 @endif
