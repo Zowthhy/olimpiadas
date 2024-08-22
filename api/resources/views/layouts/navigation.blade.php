@@ -16,7 +16,7 @@
             </div>
             <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
                 <x-nav-link :href="route('pedido.historialUser')" :active="request()->routeIs('pedido.historialUser')">
-                    {{ __('Historial') }}
+                    {{ __('Compras') }}
                 </x-nav-link>
             </div>
         </div>

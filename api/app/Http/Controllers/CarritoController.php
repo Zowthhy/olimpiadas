@@ -25,22 +25,30 @@ class CarritoController extends Controller
     
             $carrito = session()->get('carrito', []);
             
-            if (isset($carrito[$productoId])) {
-                $carrito[$productoId]['quantity']++;
-            } else {
-                $carrito[$productoId] = [
-                    'codigo' => $producto->codigo,
-                    'descripcion' => $producto->descripcion,
-                    'precio' => $producto->precio,
-                    'quantity' => 1
-                ];
-            }
-    
-            session()->put('carrito', $carrito);
 
-            return redirect()->back()->with('success', 'Producto añadido al carrito.');
+                if (isset($carrito[$productoId])){
+                    if ($producto -> stock > $carrito[$productoId]['quantity'])
+                    $carrito[$productoId]['quantity']++;
+                    else{
+                        return redirect()->back()->with('error','Stock insuficiente');
+                    }
+                } else {
+                    $carrito[$productoId] = [
+                        'codigo' => $producto->codigo,
+                        'descripcion' => $producto->descripcion,
+                        'precio' => $producto->precio,
+                        'quantity' => 1
+                    ];
+                }
+
+                session()->put('carrito', $carrito);
+
+                return redirect()->back()->with('success', 'Producto añadido al carrito.');
+            
+    
+
         }
-    }
+}
 
     public function remove(carrito $carrito, $productoId)
     {

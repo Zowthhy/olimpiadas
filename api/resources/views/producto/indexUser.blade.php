@@ -8,12 +8,16 @@
                     <div class="producto">
     
                            {{ $producto-> descripcion }}
-                           {{ $producto-> precio }}
+                           {{ $producto-> precio }}$
     
+                           @if ($producto -> stock > 0)
                            <form action="{{ route('carrito.add', $producto->codigo) }}" method="POST">
                             @csrf
                             <button type="submit">Añadir al Carrito</button>
                         </form>
+                            @else
+                                <p>Fuera de stock</p>
+                            @endif
                     </div>  
 
     
@@ -39,5 +43,10 @@
 
         @endforeach
         </div>  
+        @if (session('message'))
+            <div class="alert alert-success alert-dismissible fade show" role="alert">
+                {{ session('message') }}
+            </div>
+        @endif
 </x-guest-layout>
 @endif

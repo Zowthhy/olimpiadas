@@ -31,6 +31,16 @@
             <main>
                 {{ $slot }}
             </main>
+            @if (session('error'))
+                <div class="error-message">
+                    {{ session('error') }}
+                </div>
+            @elseif (session('success'))
+                <div class="success-message">
+                    {{ session('success') }}
+                </div>
+            @endif
+            
         </div>
     </body>
 </html>

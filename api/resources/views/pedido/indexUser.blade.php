@@ -30,6 +30,7 @@
                             Pendiente
                          @endif
                     </th>
+                    @if (request()->path() == 'indexUser')
                        <th>
                             <form action="{{ route('pedido.destroyUser', $pedido) }}" method="POST">
                                 @csrf
@@ -37,6 +38,7 @@
                                 <button class="pedido-delete-button">Cancelar</button>
                             </form>
                        </th>
+                    @endif
                        <th><a href="{{ route('pedido.showUser', $pedido) }}">Detalles</a></th>
                     </div>
                 </div>    
@@ -44,5 +46,5 @@
             @endforeach
             </table>
         </div>   
-@endif
+    @endif
 </x-app-layout> 
